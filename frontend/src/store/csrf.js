@@ -20,7 +20,7 @@ async function csrfFetch(url, options = {}) {
     }
 
 export async function restoreCSRF() {
-    const response = await csrfFetch('/api/session')
+    const response = await csrfFetch('https://api.ph4se.dev/wavecave/session')
     storeCSRFToken(response)
     return response;
 }

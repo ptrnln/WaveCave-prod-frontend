@@ -1,4 +1,4 @@
-class Api::UsersController < ApplicationController
+class UsersController < ApplicationController
   
   wrap_parameters include: User.attribute_names + ['password']
 
@@ -20,7 +20,8 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(username: CGI.unescape(params[:username]))
+    @user = User.find_by(username: CGI.unescape(params[:username])) if params[:username]
+    @user = User.find(params[:id]) if params[:id]
     @user ||= User.find_by(email: params[:credential])
     @user ||= User.find_by(username: params[:credential])
     

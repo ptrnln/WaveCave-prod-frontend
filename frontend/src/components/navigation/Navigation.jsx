@@ -28,7 +28,7 @@ const Navigation = () => {
     const handleLoadTracks = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('/api/tracks');
+            const response = await fetch('https://api.ph4se.dev/wavecave/tracks');
             const data = await response.json();
             
             const tracks = data.tracks;

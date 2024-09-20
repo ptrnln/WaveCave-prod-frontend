@@ -57,7 +57,7 @@ export const clearErrors = () => {
 
 export const restoreSession = () => async dispatch => {
     try {
-        const response = await fetch("/api/session");
+        const response = await fetch("https://api.ph4se.dev/wavecave/session");
         if(response.ok) {
             storeCSRFToken(response);
             const data = await response.json();
@@ -71,7 +71,7 @@ export const restoreSession = () => async dispatch => {
 
 export const signUp = user => async dispatch => {
     const { username, email, password } = user;
-    const response = await csrfFetch('/api/users', {
+    const response = await csrfFetch('https://api.ph4se.dev/wavecave/users', {
         method: 'POST',
         body: JSON.stringify({
             username,
@@ -92,7 +92,7 @@ export const signUp = user => async dispatch => {
 };
 
 export const login = ({ credential, password }) => async dispatch => {
-    const response = await csrfFetch('/api/session', {
+    const response = await csrfFetch('https://api.ph4se.dev/wavecave/session', {
         method: 'POST',
         body: JSON.stringify({ credential, password })
     });
@@ -105,7 +105,7 @@ export const login = ({ credential, password }) => async dispatch => {
 }
 
 export const logout = () => async dispatch => {
-    const response = await csrfFetch('/api/session', {
+    const response = await csrfFetch('https://api.ph4se.dev/wavecave/session', {
         method: 'DELETE'
     })
 

@@ -7,7 +7,7 @@ const REMOVE_TRACKS = 'tracks/REMOVE_TRACKS'
 const RECEIVE_LOCAL_SOURCE = 'tracks/RECEIVE_LOCAL_SOURCE'
 
 export async function deleteTrack (trackId) {
-    const response = await csrfFetch(`/api/tracks/${trackId}`, {
+    const response = await csrfFetch(`https://api.ph4se.dev/wavecave/tracks/${trackId}`, {
         method: 'DELETE'
     })
     
@@ -18,7 +18,7 @@ export async function deleteTrack (trackId) {
 }
 
 export async function getTrackByUserNameAndTitle (username, title) {
-    const response = await csrfFetch(`/api/users/${username}/tracks/${title}`);
+    const response = await csrfFetch(`https://api.ph4se.dev/wavecave/users/${username}/tracks/${title}`);
 
     if(response.ok) {
         const data = await response.json();
@@ -90,7 +90,7 @@ export const loadTracksLocally = (trackIds, lazy = true) => async (dispatch, get
 export const loadTrack = trackId => async (dispatch, getState) => {
     const track = getState().tracks[trackId];
     if(track === undefined) {
-        const response = await fetch(`/api/tracks/${trackId}`);
+        const response = await fetch(`https://api.ph4se.dev/wavecave/tracks/${trackId}`);
     
         if(response.ok) {
             let data = await response.json();
@@ -168,7 +168,7 @@ export async function updateTrack (trackData, audioFile, imageFile) {
     if(audioFile) formData.append('track[source]', audioFile);
     if(imageFile) formData.append('track[photo]', imageFile)
 
-    const response = await csrfFetch(`/api/tracks/${id}`, {
+    const response = await csrfFetch(`https://api.ph4se.dev/wavecave/tracks/${id}`, {
         method: 'PUT',
         body: formData
     })

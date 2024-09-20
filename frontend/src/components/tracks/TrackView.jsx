@@ -49,7 +49,7 @@ export default function TrackView() {
     // useEffect(() => {
     //     if(!track) {
     //             const getTrackInfo = async () => {
-    //             const response = await fetch(`/api/users/${track.username}/tracks/${track.title}`);
+    //             const response = await fetch(`https://api.ph4se.dev/wavecave/users/${track.username}/tracks/${track.title}`);
                 
     //             if(response.ok) {
     //                 const data = await response.json();

@@ -20,7 +20,7 @@ export const receiveUser = user => {
 }
 
 export const viewUser = ({ username }) => async dispatch => {
-    const response = await fetch(`/api/users/${username}`);
+    const response = await fetch(`https://api.ph4se.dev/wavecave/users/${username}`);
 
     if(response.ok) {
         const data = await response.json();

@@ -66,14 +66,14 @@ export const createPlaylist = playlist => async (dispatch) => {
 
     const trackIds = playlist.trackIds || [];
 
-    const response = await csrfFetch('/api/playlists', {
+    const response = await csrfFetch('https://api.ph4se.dev/wavecave/playlists', {
         method: 'POST',
         body: JSON.stringify(playlist.filter(key => key !== 'trackIds'))
     })
 
     if(response.ok) {
         trackIds.forEach(async trackId => {
-            await csrfFetch(`/api/playlist_tracks/`, {
+            await csrfFetch(`https://api.ph4se.dev/wavecave/playlist_tracks/`, {
                 method: 'POST',
                 body: JSON.stringify({ trackId })
             })
@@ -87,7 +87,7 @@ export const createPlaylist = playlist => async (dispatch) => {
 export const loadPlaylist = playlistId => async (dispatch, getState) => {
     const playlist = getState().playlists[playlistId];
     if(playlist === undefined) {
-        const response = await fetch(`/api/playlists/${playlistId}`);
+        const response = await fetch(`https://api.ph4se.dev/wavecave/playlists/${playlistId}`);
 
         if(response.ok) {
             let data = await response.json();
@@ -102,7 +102,7 @@ export const loadPlaylist = playlistId => async (dispatch, getState) => {
 }
 
 export const savePlaylist = (playlist) => async (dispatch) => {
-    const response = await csrfFetch(`/api/playlists/${playlist.id}`, {
+    const response = await csrfFetch(`https://api.ph4se.dev/wavecave/playlists/${playlist.id}`, {
         method: 'PUT',
         body: JSON.stringify(playlist)
     })

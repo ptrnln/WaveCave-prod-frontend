@@ -24,7 +24,7 @@ export default function TrackIndexItem({ track }) {
         await dispatch(audioPlayerActions.dequeueTrack(e.target.value));
         await dispatch(trackActions.removeTrack(e.target.value));
 
-        const response = await csrfFetch(`/api/tracks/${e.target.value}`, {
+        const response = await csrfFetch(`https://api.ph4se.dev/wavecave/tracks/${e.target.value}`, {
             method: 'DELETE'
         })
         

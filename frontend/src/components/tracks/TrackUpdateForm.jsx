@@ -70,7 +70,7 @@ export default function TrackUpdateForm() {
 
     useEffect(() => {
         async function getTrackData() {
-            const response = await csrfFetch(`/api/users/${username}/tracks/${title}`);
+            const response = await csrfFetch(`https://api.ph4se.dev/wavecave/users/${username}/tracks/${title}`);
 
             if(response.ok) {
                 const data = await response.json();

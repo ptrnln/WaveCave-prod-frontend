@@ -55,7 +55,7 @@ function Layout() {
 
 const userLoader = async ({ params }) => {
   
-  const response = await fetch(`/api/users/@${params.username}`);
+  const response = await fetch(`https://api.ph4se.dev/wavecave/users/@${params.username}`);
   
   if(response.ok) {
     const data = await response.json();
@@ -66,7 +66,7 @@ const userLoader = async ({ params }) => {
 }
 
 const trackLoader = async ({ params }) => {
-  const response = await fetch(`/api/users/${params.username}/tracks/${params.title}`).catch((reasons) => {throw reasons})
+  const response = await fetch(`https://api.ph4se.dev/wavecave/users/${params.username}/tracks/${params.title}`).catch((reasons) => {throw reasons})
   
   
   if(response.ok) {
